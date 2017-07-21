@@ -16,4 +16,25 @@ cd ~/ros_ws
 catkin_make
 ```
 
+## Launching Pipeline
+Include the following in your launch file.
+```
+<launch>
+	<include file="$(find pc_pipeline_launch)/launch/pc_pipeline.launch">
+		    <arg name="robot" value="$(arg robot)" />
+        <arg name="pc_filter/xpassthrough/filter_limit_min" value="0" />
+        <arg name="pc_filter/ypassthrough/filter_limit_min" value="0" />
+        <arg name="pc_filter/zpassthrough/filter_limit_min" value="0" />
+        <arg name="pc_filter/xpassthrough/filter_limit_max" value="1" />
+        <arg name="pc_filter/ypassthrough/filter_limit_max" value="1" />
+        <arg name="pc_filter/zpassthrough/filter_limit_max" value="1" />
+        <arg name="pc_filter/observed_frame_id" value="/camera_rgb_optical_frame" />
+        <arg name="pc_filter/filtered_frame_id" value="/ar_marker_8_filtered" />
+        <arg name="pc_filter/input_pc_topic" value="/camera/depth_registered/points" />
+        <arg name="pc_filter/output_pc_topic" value="/filtered_pc" />
+        <arg name="run_partial_mesh" value="True" />
+   </include>
+</launch>
+```
+
 
