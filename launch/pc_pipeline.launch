@@ -1,0 +1,49 @@
+<launch>
+	<arg name="pc_filter/xpassthrough/filter_limit_min"/>
+	<arg name="pc_filter/ypassthrough/filter_limit_min"/>
+	<arg name="pc_filter/zpassthrough/filter_limit_min"/>
+	<arg name="pc_filter/xpassthrough/filter_limit_max"/>
+	<arg name="pc_filter/ypassthrough/filter_limit_max"/>
+	<arg name="pc_filter/zpassthrough/filter_limit_max"/>
+      	<arg name="pc_filter/observed_frame_id"/>
+	<arg name="pc_filter/filtered_frame_id"/>
+	<arg name="pc_filter/input_pc_topic"/>
+	<arg name="pc_filter/output_pc_topic"/>
+
+	<!-- If true, then the pointclouds are meshed by simply running them through marching cubes rather than shape completion -->
+	<!-- Alternatively, the shape completion node can be run on a machine with a sufficient gpu -->
+	<arg name="run_partial_mesh"/>	
+
+	<!-- Listens to the raw pointclouds, and filters them via a pass through filter -->
+	<group ns="pc_filter">
+	       <param name="xpassthrough/filter_limit_min" value="$(arg pc_filter/xpassthrough/filter_limit_min)" />
+	       <param name="ypassthrough/filter_limit_min" value="$(arg pc_filter/ypassthrough/filter_limit_min)" />
+	       <param name="zpassthrough/filter_limit_min" value="$(arg pc_filter/zpassthrough/filter_limit_min)" />
+	       <param name="xpassthrough/filter_limit_max" value="$(arg pc_filter/xpassthrough/filter_limit_max)" />
+	       <param name="ypassthrough/filter_limit_max" value="$(arg pc_filter/ypassthrough/filter_limit_max)" />
+	       <param name="zpassthrough/filter_limit_max" value="$(arg pc_filter/zpassthrough/filter_limit_max)" />
+      	       <param name="observed_frame_id" value="$(arg pc_filter/observed_frame_id)" />
+	       <param name="filtered_frame_id" value="$(arg pc_filter/filtered_frame_id)" />
+	       <param name="input_pc_topic" value="$(arg pc_filter/input_pc_topic)" />
+	       <param name="output_pc_topic" value="$(arg pc_filter/output_pc_topic)" />
+
+	       <node name="pc_filter" pkg="pc_filter" type="pc_filter"/>
+   	</group>
+
+	<!-- Exposes an action server to allow a client to request the currently filtered cloud be segmented, and meshed. -->
+	<group ns="pc_scene_completion">
+	       <param name="filtered_cloud_topic" value="$(arg pc_filter/filtered_cloud_topic)" />
+	       <param name="camera_frame" value="$(arg pc_filter/observed_frame_id)" />
+	       <param name="world_frame" value="$(arg pc_filter/filtered_frame_id)" />
+
+	       <node name="pc_scene_completion" pkg="pc_scene_completion" type="pc_scene_completion"/>
+	</group>
+
+	<!-- This is used within pc_scene_completion to complete the individual segments -->
+	<group ns="pc_partial_mesh" if="$(arg run_partial_mesh)">
+	       <node name="pc_partial_mesh" pkg="pc_partial_mesh" type="partial_completion.py"/>
+	</group>
+
+	
+	
+</launch>
