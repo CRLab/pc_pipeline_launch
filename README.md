@@ -83,7 +83,25 @@ In [4]: result = pc_scene_completion_client.complete_scene()
 [INFO] [WallTime: 1500928435.849782] waiting for result
 [INFO] [WallTime: 1500928436.118592] received result
 
-pc_scene_completion_client.ros_mesh_msg_to_plyfile(result.meshes[0], "/home/jvarley/out.ply")
+In [5]: pc_scene_completion_client.ros_mesh_msg_to_plyfile(result.meshes[0], "/home/jvarley/out.ply")
+In [6]: print result.poses[0]
+header: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+pose: 
+  position: 
+    x: -0.17035150528
+    y: -0.00505908951163
+    z: 0.0
+  orientation: 
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+
 ```
 5) You can visualize the produced partial mesh with:
 ```
