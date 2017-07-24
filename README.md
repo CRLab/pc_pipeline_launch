@@ -47,7 +47,39 @@ Include the following in your launch file.
     </include>
 </launch>
 ```
+For example, my top level perception launch file looks like this:
+```
+<launch>
 
+    <include file="$(find freenect_launch)/launch/freenect.launch">
+        <arg name="depth_registration" value="true" />
+        <arg name="bond" value="true" />
+        <arg name="data_skip" value="5"/>
+    </include>
+
+    <include file="$(find pc_pipeline_launch)/launch/pc_pipeline.launch">
+             <arg name="pc_filter/xpassthrough/filter_limit_min" value="0" />
+             <arg name="pc_filter/ypassthrough/filter_limit_min" value="0" />
+             <arg name="pc_filter/zpassthrough/filter_limit_min" value="0.01" />
+             <arg name="pc_filter/xpassthrough/filter_limit_max" value="0.20" />
+             <arg name="pc_filter/ypassthrough/filter_limit_max" value="0.30" />
+             <arg name="pc_filter/zpassthrough/filter_limit_max" value="1" />
+             <arg name="pc_filter/observed_frame_id" value="/camera_rgb_optical_frame" />
+             <arg name="pc_filter/filtered_frame_id" value="/ar_marker_14_filtered" />
+             <arg name="pc_filter/input_pc_topic" value="/camera/depth_registered/points" />
+             <arg name="pc_filter/output_pc_topic" value="/filtered_pc" />
+             <arg name="run_partial_mesh" value="True" />
+    </include>
+
+    <include file="$(find ar_tracking)/launch/publish_transform.launch"/>
+    <include file="$(find ar_tracking)/launch/staubli_barrett_kinect360.launch"/>
+
+    <node pkg="filter_tf" type="filter_tf.py" name="filter_tf_marker8" args="/ar_marker_8 /camera_rgb_optical_frame"/>
+    <node pkg="filter_tf" type="filter_tf.py" name="filter_tf_marker14" args="/ar_marker_14 /camera_rgb_optical_frame"/>
+
+</launch>
+
+```
 ## Step by Step Sanity check:
 
 1) Verify the raw pointcloud is publishing in RVIZ:
