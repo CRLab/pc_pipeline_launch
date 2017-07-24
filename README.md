@@ -48,7 +48,7 @@ Include the following in your launch file.
          title="Raw PointCloud" align="right" />
 	 
 	 
-3) If the filtered frames our detected, we can verify that pc_filter is able to filter the raw pointcloud using the filter values from the launch file in the desired reference frame.  
+3) If the filtered frames our detected, we can verify that pc_filter is able to filter the raw pointcloud using the filter values from the launch file in the desired reference frame.  In our example, the pointcloud is published in the frame of reference of the artag, and the filtered pointcloud is published on the ROS topic /filtered_pc
 <img src="https://github.com/CURG/pc_pipeline_launch/blob/master/imgs/pc_filter.png" alt="raw pointcloud"
          title="Raw PointCloud" align="right" />
 
