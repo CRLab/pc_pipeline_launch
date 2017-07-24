@@ -69,6 +69,7 @@ import rospy
 import pc_scene_completion_client
 nh  = rospy.init_node("scene_completion_client")
 result = pc_scene_completion_client.complete_scene()
+pc_scene_completion_client.ros_mesh_msg_to_plyfile(result.meshes[0], "/home/jvarley/out.ply")
 
 ```
 
