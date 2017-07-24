@@ -12,6 +12,8 @@ git clone git@github.com:CURG/pc_partial_mesh.git
 git clone git@github.com:CURG/pc_pipeline_launch.git
 git clone git@github.com:CURG/pc_filter.git
 git clone git@github.com:CURG/pc_scene_completion.git
+git clone git@github.com:CURG/pc_pipeline_msgs.git
+git clone git@github.com:CURG/pc_scene_completion_client.git
 cd ~/ros_ws
 catkin_make
 ```
