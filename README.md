@@ -40,9 +40,10 @@ Include the following in your launch file.
 	<arg name="pc_filter/filtered_frame_id" value="/ar_marker_8_filtered" />
 	<arg name="pc_filter/input_pc_topic" value="/camera/depth_registered/points" />
 	<arg name="pc_filter/output_pc_topic" value="/filtered_pc" />
-	<!--Set True if you have shape completion cnn running on a machine with a GPU -->
-	<!--Set False if you want to run the pc_object_completion_partial which is simpler to debug -->
-	<arg name="enable_shape_completion_cnn" value="False" /> 
+	
+	<!--Set True if you want to run the pc_object_completion_partial which is simpler to debug-->
+	<!--Set False if you have shape completion cnn running on a machine with a GPU  -->
+	<arg name="run_partial_mesh" value="True" /> 
     </include>
 </launch>
 ```
