@@ -15,7 +15,7 @@ pycollada https://github.com/pycollada/pycollada
 cd ~/ros_ws
 mkdir pc_pipeline
 cd pc_pipeline
-git clone git@github.com:CURG/pc_partial_mesh.git
+git clone git@github.com:CURG/pc_object_completion_partial.git
 git clone git@github.com:CURG/pc_pipeline_launch.git
 git clone git@github.com:CURG/pc_filter.git
 git clone git@github.com:CURG/pc_scene_completion.git
