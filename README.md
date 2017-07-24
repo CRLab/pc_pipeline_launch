@@ -6,7 +6,7 @@ The pc_filter node listens for raw pointclouds from the kinect and filters them 
 ## Dependencies
 This system has been tested on ubuntu 14.04 with ROS Indigo and ubuntu 16.04 with ROS Kinetic
 ```
-mcubes, https://github.com/ShapeCompletion3D/PyMCubes
+mcubes, https://github.com/pmneila/PyMCubes
 ```
 
 ## Setup
