@@ -63,17 +63,31 @@ Include the following in your launch file.
 	 
 4) In order to get a set of meshes representing the scene, Use the action server provided by the pc_scene_completion package.  You can easily try it out with the python client.
 ```
-ipython
+jvarley@skye:~$ ipython
+Python 2.7.6 (default, Oct 26 2016, 20:30:19) 
+Type "copyright", "credits" or "license" for more information.
 
-import rospy
-import pc_scene_completion_client
-nh  = rospy.init_node("scene_completion_client")
-result = pc_scene_completion_client.complete_scene()
+IPython 1.2.1 -- An enhanced Interactive Python.
+?         -> Introduction and overview of IPython's features.
+%quickref -> Quick reference.
+help      -> Python's own help system.
+object?   -> Details about 'object', use 'object??' for extra details.
+
+In [1]: import rospy
+In [2]: import pc_scene_completion_client
+In [3]: nh = rospy.init_node("scene_completion_client")
+In [4]: result = pc_scene_completion_client.complete_scene()
+[INFO] [WallTime: 1500928435.584586] waiting for scene_completion server...
+[INFO] [WallTime: 1500928435.848621] scene_completion server started
+[INFO] [WallTime: 1500928435.849404] about to send scene_completion goal
+[INFO] [WallTime: 1500928435.849782] waiting for result
+[INFO] [WallTime: 1500928436.118592] received result
+
 pc_scene_completion_client.ros_mesh_msg_to_plyfile(result.meshes[0], "/home/jvarley/out.ply")
 ```
 5) You can visualize the produced partial mesh with:
 ```
-meshlab out.ply
+jvarley@skye:~$ meshlab out.ply
 ```
 <img src="https://github.com/CURG/pc_pipeline_launch/blob/master/imgs/partial_mesh.png" alt="raw pointcloud"
          title="Raw PointCloud" align="right" />
