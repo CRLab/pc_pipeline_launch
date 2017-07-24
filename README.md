@@ -42,9 +42,11 @@ Include the following in your launch file.
 <img src="https://github.com/CURG/pc_pipeline_launch/blob/master/imgs/raw_pointcloud.png" alt="raw pointcloud"
          title="Raw PointCloud" align="right" />
 	 
-2) Verify that the reference frame you want to filter the raw pointcloud in exists. Here we are going to filter our tag in the AR marker tag using the package from https://github.com/ros-perception/ar_track_alvar.  We also filter the detected tf frame using https://github.com/CURG/filter_tf. The below image shows that these ar tags are being detected correctly. 
+	 
+2) Verify that the reference frame you want to filter the raw pointcloud in exists. Here we are going to filter our cloud in the frame of the AR marker tag using the package from https://github.com/ros-perception/ar_track_alvar.  We also smooth the detected tf frame using https://github.com/CURG/filter_tf. The below image shows that these ar tags are being detected correctly. 
 <img src="https://github.com/CURG/pc_pipeline_launch/blob/master/imgs/filter_frame.png" alt="raw pointcloud"
          title="Raw PointCloud" align="right" />
+	 
 	 
 3) If the filtered frames our detected, we can verify that pc_filter is able to filter the raw pointcloud using the filter values from the launch file in the desired reference frame.  
 <img src="https://github.com/CURG/pc_pipeline_launch/blob/master/imgs/pc_filter.png" alt="raw pointcloud"
