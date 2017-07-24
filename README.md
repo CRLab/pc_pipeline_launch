@@ -145,3 +145,5 @@ jvarley@skye:~$ meshlab out.ply
 <img src="https://github.com/CURG/pc_pipeline_launch/blob/master/imgs/partial_mesh.png" alt="raw pointcloud"
          title="Raw PointCloud" align="right" />
 
+6) Once the pc_pipeline is working for you, you can setup the pc_object_completion_cnn node to return meshes of completed objects rather than meshs of the partial view following:
+http://shapecompletiongrasping.cs.columbia.edu/
