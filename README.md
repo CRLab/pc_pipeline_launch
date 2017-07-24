@@ -75,6 +75,6 @@ pc_scene_completion_client.ros_mesh_msg_to_plyfile(result.meshes[0], "/home/jvar
 ```
 meshlab out.ply
 ```
-<img src="https://github.com/CURG/pc_pipeline_launch/blob/master/imgs/pc_filter.png" alt="raw pointcloud"
+<img src="https://github.com/CURG/pc_pipeline_launch/blob/master/imgs/partial_mesh.png" alt="raw pointcloud"
          title="Raw PointCloud" align="right" />
 
