@@ -31,16 +31,16 @@
    	</group>
 
 	<!-- Exposes an action server to allow a client to request the currently filtered cloud be segmented, and meshed. -->
-	<group ns="pc_scene_completion">
-	       <param name="filtered_cloud_topic" value="$(arg pc_filter/filtered_cloud_topic)" />
+	<group>
+	       <param name="filtered_cloud_topic" value="$(arg pc_filter/output_pc_topic)" />
 	       <param name="camera_frame" value="$(arg pc_filter/observed_frame_id)" />
 	       <param name="world_frame" value="$(arg pc_filter/filtered_frame_id)" />
 
-	       <node name="pc_scene_completion" pkg="pc_scene_completion" type="pc_scene_completion"/>
+	       <node name="pc_scene_completion" pkg="pc_scene_completion" type="pc_scene_completion_node"/>
 	</group>
 
 	<!-- This is used within pc_scene_completion to complete the individual segments -->
-	<group ns="pc_partial_mesh" if="$(arg run_partial_mesh)">
+	<group  if="$(arg run_partial_mesh)">
 	       <node name="pc_partial_mesh" pkg="pc_partial_mesh" type="partial_completion.py"/>
 	</group>
 
