@@ -61,5 +61,14 @@ Include the following in your launch file.
 <img src="https://github.com/CURG/pc_pipeline_launch/blob/master/imgs/pc_filter.png" alt="raw pointcloud"
          title="Raw PointCloud" align="right" />
 	 
-	 
+4) In order to get a set of meshes representing the scene, Use the action server provided by the pc_scene_completion package.  You can easily try it out with the python client.
+```
+ipython
+
+import rospy
+import pc_scene_completion_client
+nh  = rospy.init_node("scene_completion_client")
+result = pc_scene_completion_client.complete_scene()
+
+```
 
