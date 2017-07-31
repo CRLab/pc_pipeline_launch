@@ -41,7 +41,10 @@
 
 	<!-- This is used within pc_scene_completion to complete the individual segments -->
 	<group  if="$(arg run_partial_mesh)">
-	       <node name="pc_partial_mesh" pkg="pc_partial_mesh" type="partial_completion.py"/>
+	       <node name="pc_partial_mesh" pkg="pc_object_completion_partial" type="partial_completion.py"/>
+	</group>
+	<group  unless="$(arg run_partial_mesh)">
+	       <node name="pc_cnn_mesh" pkg="pc_object_completion_cnn" type="mesh_completion_server.py"/>
 	</group>
 
 	
