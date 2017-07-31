@@ -36,7 +36,7 @@
 	       <param name="camera_frame" value="$(arg pc_filter/observed_frame_id)" />
 	       <param name="world_frame" value="$(arg pc_filter/filtered_frame_id)" />
 
-	       <node name="pc_scene_completion" pkg="pc_scene_completion" type="pc_scene_completion_node"/>
+	       <node name="pc_scene_completion" pkg="pc_scene_completion" type="pc_scene_completion_node" output="screen"/>
 	</group>
 
 	<!-- This is used within pc_scene_completion to complete the individual segments -->
